@@ -1,0 +1,19 @@
+[package]
+name = "frontend"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+yew = "0.19.3"
+yew-router = "0.16.0"
+wasm-bindgen = { version = "0.2.78", features = ["serde-serialize"] }
+web-sys = "0.3.55"
+wasm-bindgen-futures = "0.4.28"
+js-sys = "0.3.55"
+gloo = "0.8.0"
+gloo-utils = "0.1.4"
+futures = "0.3.21"
+serde = { version = "1.0.137", features = ["derive"] }
+serde_derive= "1.0.137"
