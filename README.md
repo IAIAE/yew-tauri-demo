@@ -38,19 +38,3 @@ Tauri: https://tauri.studio/en/docs/get-started/intro
 Yew: https://yew.rs/docs/getting-started/introduction
 
 
-
-can js hold some persistent callback from yew?
-i tried this:
-```rust
-let bbb = ctx.link().callback(|e|  Msg::JSEvt(e));
-let yewcb = Closure::new(move |evt:JsValue| {
-    bbb.emit(evt);
-}).into_js_value();
-binding::jsSetYewCb(yewcb);
-```
-but the compiler err at `Closure::new`, see: 
-```
-main.rs(117, 17): `self` is a reference that is only valid in the associated function body
-main.rs(117, 17): let's call the lifetime of this reference `'1`
-```
-means i cannot hold the self
