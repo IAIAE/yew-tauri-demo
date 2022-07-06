@@ -8,7 +8,7 @@ edition = "2021"
 [dependencies]
 yew = "0.19.3"
 yew-router = "0.16.0"
-wasm-bindgen = { version = "0.2.78", features = ["serde-serialize"] }
+wasm-bindgen = { version = "0.2.81", features = ["serde-serialize"] }
 web-sys = "0.3.55"
 wasm-bindgen-futures = "0.4.28"
 js-sys = "0.3.55"

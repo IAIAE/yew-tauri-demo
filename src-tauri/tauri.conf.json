@@ -1,6 +1,6 @@
 {
   "package": {
-    "productName": "tauri-yew-demo",
+    "productName": "iaiae-tauri-yew-demo",
     "version": "0.1.0"
   },
   "build": {
@@ -14,7 +14,7 @@
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "com.tauri.dev",
+      "identifier": "iaiae.tauri.yew.demo",
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",
@@ -52,10 +52,10 @@
     },
     "windows": [
       {
-        "title": "Tauri Yew Demo",
-        "width": 800,
-        "height": 600,
-        "resizable": true,
+        "title": "工具集合",
+        "width": 1400,
+        "height": 1100,
+        "resizable": false,
         "fullscreen": false
       }
     ],
