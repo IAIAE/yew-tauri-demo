@@ -95,7 +95,7 @@ fn getUser() -> Result<User, String> {
       address: Some(Home {
         at: 12312.123123,
         lo: 1243342.123123,
-        desc: "广州越秀区西华路乐华街7号".to_owned(),
+        desc: "nowhere #.7".to_owned(),
       })
     })
   }else {
