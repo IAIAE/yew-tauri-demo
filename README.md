@@ -1,8 +1,6 @@
 # Tauri + Yew Demo
 
-This is a small demo to accompany the Tauri + Yew tutorial
-
-https://dev.to/stevepryde/create-a-desktop-app-in-rust-using-tauri-and-yew-2bhe
+练手项目，包含yew -> js -> tauri 的异步调用过程。同时包含tauri -> js -> yew的通信过程。
 
 ## Installation
 
@@ -37,4 +35,6 @@ Tauri: https://tauri.studio/en/docs/get-started/intro
 
 Yew: https://yew.rs/docs/getting-started/introduction
 
+wasm-bindgen-usage: https://rustwasm.github.io/wasm-bindgen/reference/passing-rust-closures-to-js.html
 
+trunk: https://trunkrs.dev/
