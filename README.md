@@ -8,7 +8,7 @@
 rustup target add wasm32-unknown-unknown
 cargo install trunk
 cargo install wasm-bindgen-cli
-cargo install tauri-cli --version ^1.0.0-beta
+cargo install tauri-cli --version ^1.0.0
 ```
 
 ## Dev Server 
@@ -38,3 +38,4 @@ Yew: https://yew.rs/docs/getting-started/introduction
 wasm-bindgen-usage: https://rustwasm.github.io/wasm-bindgen/reference/passing-rust-closures-to-js.html
 
 trunk: https://trunkrs.dev/
+
