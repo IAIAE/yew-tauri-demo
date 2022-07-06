@@ -102,7 +102,7 @@ impl Component for Model {
         html!(<>
             <div>
                 <h2 class="heading">{message}</h2>
-                <div>{"下面的信息由yew调用js，然后js再调用tauri宿主，再原路返回而得，支持async。(我设置了一定概率会失败，可以右键reload一下)"}</div>
+                <div>{"下面的信息由yew -> js -> tauri调用获得，支持async。(我设置了一定概率会失败，可以右键reload一下)"}</div>
                 {if let Some(user) = &self.user {
                     self.renderUser(&user)
                 }else {html!()}}
@@ -111,6 +111,7 @@ impl Component for Model {
                     self.renderErrtip(tip)
                 }else{html!()}}
                 <div style="margin-top: 20px;"><button class="btn" onclick={ctx.link().callback(|_| Msg::AddCount)}>{"+1"}</button><span style="display: inline-block; vertical-align: middle; margin-left: 20px;">{self.count}</span></div>
+                <div style="margin-top: 20px;">{"而从tauri -> js -> yew 的调用过程，点击顶部菜单栏编辑/复制，即可在console中看到yew的响应。"}</div>
             </div>
         </>)
     }
@@ -131,10 +132,9 @@ impl Component for Model {
             let sendErr = link.callback(Msg::SetErrTip);
             
             spawn_local(async move {
-                console::info!("rendered ====> inner invoke the tauri");
                 let (res1, res2) = join!(
                     binding::getUser(), 
-                    binding::hello(Closure::once_into_js(|| "hello yew and tauri".to_string()))
+                    binding::hello(Closure::once_into_js(|| "Hello Yew and Tauri!".to_string()))
                 );
 
                 match res1 {
@@ -149,7 +149,7 @@ impl Component for Model {
                 }
                 match res2 {
                     Ok(msg) => {
-                        console::info!("ok ", &msg);
+                        // console::info!("ok ", &msg);
                         sendWelcom.emit(msg.as_string().unwrap());
                     },
                     Err(err) => {
@@ -158,7 +158,6 @@ impl Component for Model {
                 }
                 
             });
-            console::info!("rendered ===> ");
         }
 
     }
@@ -182,7 +181,7 @@ impl Component for Model {
                 true
             },
             Msg::JSEvt(evt) => {
-                console::info!("evt is ", &evt);
+                console::info!("tauri event is ", &evt);
                 if !evt.is_instance_of::<js_sys::Object>() {
                     return false    
                 }

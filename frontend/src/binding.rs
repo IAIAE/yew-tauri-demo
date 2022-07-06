@@ -26,7 +26,11 @@ extern "C" {
     #[wasm_bindgen(js_name = getUser, catch)]
     pub async fn getUser() -> Result<JsValue, JsValue>;
 
+}
 
+
+#[wasm_bindgen(module = "/public/tauri.glue.bundle.js")]
+extern "C" {
     #[wasm_bindgen(js_name = jsSetYewCb, catch)]
     pub fn jsSetYewCb(cb: JsValue) -> Result<(), JsValue>;
 
@@ -34,3 +38,4 @@ extern "C" {
     pub fn jsRemoveYewCb() -> Result<(), JsValue>;
 
 }
+

@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "allowJs": true,
+        "esModuleInterop": true,
+        "baseUrl": ".",
+        "noImplicitAny": false,
+        "lib": ["ES2018", "DOM"],
+        "rootDir": ".",
+        "moduleResolution": "node",
+        "target": "ES2017"
+    },
+    "include": [
+        "./tauri.glue.bundle.ts"
+    ]
+}

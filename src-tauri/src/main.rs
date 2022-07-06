@@ -8,8 +8,9 @@ use rand::prelude::*;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Serialize, Deserialize)]
-struct CopyMessage {
-  msg: String,
+struct PayloadMsg {
+  event: String,
+  data: String,
 }
 
 
@@ -35,8 +36,9 @@ fn main() {
           event.window().close().unwrap();
         },
         "copy" => {
-          event.window().emit_all("copy", CopyMessage {
-            msg: "hello".to_string()
+          event.window().emit_all("tauri-event", PayloadMsg {
+            event: "menu-copy".to_string(),
+            data: "hello".to_string()
           });
         },
         _ => {}

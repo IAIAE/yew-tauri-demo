@@ -4,6 +4,7 @@ body {
     color: #333;
     user-select: none;
     -webkit-user-select: none;
+    font-family: PingFang SC, Helvetica, sans-serif;
 }
 
 .heading {
