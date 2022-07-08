@@ -58,6 +58,27 @@ impl Model {
             <div style="margin-top: 20px; padding: 20px; border: 1px solid #ddd; border-radius: 4px;">{format!("调用失败：{}", msg)}</div>
         )
     }
+    
+    fn getDocument(&self) -> web_sys::Document {
+        let window = web_sys::window().expect("no global `window` exists");
+        let document = window.document().expect("should have a document on window");
+        document
+    }
+
+    fn renderUploadInput(&self, ctx: &Context<Self>) -> Html {
+        let document = self.getDocument();
+        let cb = ctx.link().callback(move |e:InputEvent| {
+            let dom = document.get_element_by_id("fileinput").expect("no fileinput dom");
+            console::info!("e is ", &dom);
+            let t = dom.get_attribute("files");
+            Msg::None
+        });
+        html!(
+            <div style="margin-top: 20px;">
+                <input type="file" id="fileinput" oninput={cb} />
+            </div>
+        )
+    }
 
     /**
      * 在js中注入一个和yew通信的回调
@@ -77,9 +98,7 @@ impl Model {
         binding::jsRemoveYewCb();
     }
 
-    fn onJsEvent(&mut self, evt: JsValue){
 
-    }
 }
 
 
@@ -112,6 +131,7 @@ impl Component for Model {
                 }else{html!()}}
                 <div style="margin-top: 20px;"><button class="btn" onclick={ctx.link().callback(|_| Msg::AddCount)}>{"+1"}</button><span style="display: inline-block; vertical-align: middle; margin-left: 20px;">{self.count}</span></div>
                 <div style="margin-top: 20px;">{"而从tauri -> js -> yew 的调用过程，点击顶部菜单栏编辑/复制，即可在console中看到yew的响应。"}</div>
+                {self.renderUploadInput(ctx)}
             </div>
         </>)
     }

@@ -46,6 +46,9 @@ wasm-bindgen-usage: https://rustwasm.github.io/wasm-bindgen/reference/passing-ru
 
 trunk: https://trunkrs.dev/
 
+how wasm gc in Ocaml: https://medium.com/@sanderspies/the-road-to-webassembly-gc-for-ocaml-bd44dc7f9a9d
+how wasm gc need in Chrome: https://docs.google.com/document/d/14ZId5XdETWgQHJe4Jozi-aKwCwqvDLgLuokP0gnJq6Q/edit#
+
 ## about Content Security Policy.
 
 i use `dangerousDisableAssetCspModification` in `tauri.conf.json`. see reason below[tauri csp bug when use yew(wasm)].
